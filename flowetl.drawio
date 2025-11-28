@@ -1,0 +1,77 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="etl-toko-buku" name="ETL Toko Buku">
+    <mxGraphModel dx="1462" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- OLTP BOX -->
+        <mxCell id="2" value="Sumber Data OLTP<br>Toko Buku" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="140" y="40" width="540" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- Tabel Pelanggan -->
+        <mxCell id="3" value="Tabel Pelanggan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="170" y="70" width="140" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- Tabel Order -->
+        <mxCell id="4" value="Tabel Order" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="340" y="70" width="140" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- Tabel Buku -->
+        <mxCell id="5" value="Tabel Buku" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="510" y="70" width="140" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- ARROWS to Extract -->
+        <mxCell id="6" edge="1" parent="1" source="3" target="8" style="endArrow=classic;strokeColor=#6c8ebf;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="7" edge="1" parent="1" source="4" target="8" style="endArrow=classic;strokeColor=#6c8ebf;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="8" edge="1" parent="1" source="5" target="8" style="endArrow=classic;strokeColor=#6c8ebf;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- EXTRACT -->
+        <mxCell id="8" value="EXTRACT<br>(Ambil Data dari OLTP)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="300" y="170" width="210" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrow to Transform -->
+        <mxCell id="9" edge="1" parent="1" source="8" target="10" style="endArrow=classic;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- TRANSFORM -->
+        <mxCell id="10" value="TRANSFORM<br>- Data Cleaning<br>- Join Tabel<br>- Hitung Total Harga<br>- Format Tanggal<br>- Mapping Surrogate Key" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="260" y="270" width="290" height="130" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrow to Load -->
+        <mxCell id="11" edge="1" parent="1" source="10" target="12" style="endArrow=classic;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- LOAD -->
+        <mxCell id="12" value="LOAD ke DW<br><br>dim_pelanggan<br>dim_karyawan<br>dim_buku<br>dim_pengarang<br>dim_kategori<br>dim_penerbit<br>dim_gudang<br>dim_waktu<br><b>fact_penjualan</b>" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="260" y="430" width="290" height="180" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrow to Warehouse -->
+        <mxCell id="13" edge="1" parent="1" source="12" target="14" style="endArrow=classic;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- DATA WAREHOUSE -->
+        <mxCell id="14" value="DATA WAREHOUSE<br>(Siap Analisis & Laporan)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#5c8d5a;" vertex="1" parent="1">
+          <mxGeometry x="300" y="640" width="210" height="90" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
